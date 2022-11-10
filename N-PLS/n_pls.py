@@ -1,7 +1,6 @@
 import numpy as np
 from sklearn.base import BaseEstimator
 from sklearn.base import RegressorMixin
-from sklearn.metrics import mean_squared_error
 
 class N_PLS(RegressorMixin,BaseEstimator):
     def  __init__(self, n_components=2,a=3):
@@ -26,7 +25,6 @@ class N_PLS(RegressorMixin,BaseEstimator):
         
         mmas=np.zeros([x.shape[0],x.shape[1],x.shape[2]])
         z_pz=np.eye(x.shape[1])
-        z_z=z_pz[:,:x.shape[2]]
         
         for f in range(0,self.n_components):
             z=np.zeros([x.shape[1],x.shape[2]])
@@ -49,7 +47,6 @@ class N_PLS(RegressorMixin,BaseEstimator):
             for g in range(0,x.shape[0]):
                 mmas[g,:,:]=Tt[g,f]*WW
             x=np.array(x-(mmas)) 
-            Y_m=(np.dot(T,bf)).reshape(x.shape[0])
             y=(y-(np.dot(T,bf)).reshape(x.shape[0]))
             mass+=(np.dot(T,bf)).reshape(x.shape[0]).reshape(x.shape[0])
             bf=0

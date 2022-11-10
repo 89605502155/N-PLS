@@ -21,12 +21,15 @@ setup(
     long_description_content_type='text/markdown',
 
     url='https://github.com/89605502155/N-PLS',
+    # download_url='https://github.com/89605502155/N-PLS/archive/v{}.zip'.format(
+    #     version
+    # ),
     download_url='https://github.com/89605502155/N-PLS/archive/main.zip',
 
     license='GNU General Public License v3.0',
 
     packages=['N-PLS'],
-    install_requires=['numpy', 'sklearn'],
+    install_requires=['numpy', 'scikit-learn'],
 
     classifiers=[
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
