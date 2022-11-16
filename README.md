@@ -9,21 +9,21 @@
 
 Install the current version with [PyPI](https://pypi.org/project/):
 
-```bash
+```sh
 pip install N_PLS
 ```
 
 Or from Github:
-```bash
-pip install https://github.com/89605502155/N-PLS/main.zip
+```sh
+pip install https://github.com/89605502155/N-PLS/archive/refs/heads/main.zip
 ```
 
 ## Usage
 
-You can fit your own regression model. n_components - is a number of components of SVD decomposition and a is a parameter of L2-regularization. X_train - is a 3d-array. y_train -is a vector.
+You can fit your own regression model. `n_components` is the number of N-PLS components and `a` is the L<sub>2</sub> regularization coefficient. `X_train` is a three-way array containing the predictors, `y_train` is a vector of regressors.
 
 ```python
-from N_PLS  import N_PLS 
+from N_PLS import N_PLS
 
 model=N_PLS(n_components=4, a=0.09)
 model.fit(X_train,y_train)
@@ -36,14 +36,14 @@ y_predicted=model.predict(X_test)
 
 ## Example
 
-You can use this library with Scikit-learn library. For example, we can use GridSearchCV.
+You can use this library with Scikit-learn library. For example, we can use `GridSearchCV`.
 
-*If you installed a module from PyPi, you should to import it like this: ``` from N_PLS import N_PLS  ```*
+*If you installed a module from PyPi, you should to import it like this: `from N_PLS import N_PLS`*
 
-*If from GitHub or source: ``` from N_PLS  import N_PLS  ```*
+*If from GitHub or source: `from N_PLS  import N_PLS`*
 
 ```python
-from N_PLS  import N_PLS 
+from N_PLS  import N_PLS
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score, make_scorer
 import sklearn
@@ -55,7 +55,7 @@ scoring={'mse': make_scorer(mean_squared_error),'r2':'r2'}
 parametrsNames={'n_components': [4],
                 'a': np.logspace(-25, 25,num = 51)}
 
-gridCought=GridSearchCV(npls1, parametrsNames, cv=5, 
+gridCought=GridSearchCV(npls1, parametrsNames, cv=5,
     scoring=scoring,refit='r2',return_train_score=True)
 gridCought.fit(X_train,y_train)
 #errors
